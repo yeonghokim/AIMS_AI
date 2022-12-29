@@ -1,0 +1,6 @@
+subject( single subject ) _ Trial number _ Walk or Run _ Walking speed _ angle data (IMU data) or Heel strike index 
+sensor placement : thigh R L
+walking speed :   slow(1.1m/s) mid(1.3m/s) fast(1.5m/s)
+running speed :   slow(2m/s) fast(2.5m/s)
+
+**angle data만 있음 angle RL 데이터만 갖고 학습해야할듯
