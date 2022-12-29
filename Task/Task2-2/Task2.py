@@ -6,8 +6,17 @@ Created on Tue Nov  1 20:14:03 2022
 """
 import math
 import numpy as np
+import platform
+Linux_filepath = "/data/yeongho/task1/data/sub1"
 
-filepath = "/data/yeongho/task1/data/sub1"
+Window_filepath = "C:/Users/yeong/Desktop/ResearchStudent/Github/AIMS_AI/data/Task2/sub1"
+filepath=''
+if platform.system()=='Windows':
+    filepath = Window_filepath
+elif platform.system()=='Linux':
+    filepath = Linux_filepath
+else:
+    exit()
 ex_type= ["W","R"]
 ex_speed = ["fast","mid","slow"]
 ex_feet = ["L","R"]
@@ -146,7 +155,13 @@ import torchvision
 import torchvision.transforms as tr
 from torch.utils.data import DataLoader, Dataset
 
-device = 'cuda:3' if torch.cuda.is_available() else 'cpu'
+device=''
+if platform.system()=='Windows':
+    device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
+elif platform.system()=='Linux':
+    device = 'cuda:3' if torch.cuda.is_available() else 'cpu'
+else:
+    exit()
 
 class MyIMUData(Dataset):
     def __init__(self,imudata,label):
