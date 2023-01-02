@@ -9,9 +9,7 @@ CNNinput_width=100
 
 #%% csv data read
 import numpy as np
-
-
-
+import csv
 
 Traindata = np.empty((0,2,100), float)
 Trainlabel = np.empty((0,4), float)
@@ -19,19 +17,33 @@ Trainlabel = np.empty((0,4), float)
 Testdata = np.empty((0,2,100), float)
 Testlabel = np.empty((0,4), float)
 
-
 f = open("Traindata.csv", "r")
+rdr = csv.reader(f)
+for line in rdr:
+    HS=np.array(line[:200])
+    Traindata=np.insert(Traindata,len(Traindata),np.reshape(HS,(2,100)),axis=0)
 f.close()
 
 f = open("Trainlabel.csv", "r")
+rdr = csv.reader(f)
+for line in rdr:
+    Trainlabel=np.insert(Trainlabel,len(Trainlabel),np.array(line[:4]),axis=0)
 f.close()
 
 f = open("Testdata.csv", "r")
+rdr = csv.reader(f)
+for line in rdr:
+    HS=np.array(line[:200])
+    Testdata=np.insert(Testdata,len(Testdata),np.reshape(HS,(2,100)),axis=0)
+
 f.close()
 
 f = open("Testlabel.csv", "r")
-f.close()
+rdr = csv.reader(f)
+for line in rdr:
+    Testlabel=np.insert(Testlabel,len(Testlabel),np.array(line[:4]),axis=0)
 
+f.close()
 
 #%%
 import torch

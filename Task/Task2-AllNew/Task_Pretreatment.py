@@ -101,7 +101,7 @@ f = open("Traindata.csv", "w")
 for i in range(0,len(Traindata)):
     array = np.reshape(Traindata[i],(1,200))[0]
     for j in range(0,200):
-        f.write(str(array[j])+' ')
+        f.write(str(array[j])+', ')
     f.write('\n')
 f.close()
     
@@ -110,7 +110,7 @@ f = open("Trainlabel.csv", "w")
 for i in range(0,len(Trainlabel)):
     array =Trainlabel[i]
     for j in range(0,4):
-        f.write(str(array[j])+' ')
+        f.write(str(array[j])+', ')
     f.write('\n')
 f.close()
 
@@ -119,7 +119,7 @@ f = open("Testdata.csv", "w")
 for i in range(0,len(Testdata)):
     array = np.reshape(Testdata[i],(1,200))[0]
     for j in range(0,200):
-        f.write(str(array[j])+' ')
+        f.write(str(array[j])+', ')
     f.write('\n')
 f.close()
 
@@ -128,8 +128,6 @@ f = open("Testlabel.csv", "w")
 for i in range(0,len(Testlabel)):
     array =Testlabel[i]
     for j in range(0,4):
-        f.write(str(array[j])+' ')
+        f.write(str(array[j])+', ')
     f.write('\n')
 f.close()
-
-
