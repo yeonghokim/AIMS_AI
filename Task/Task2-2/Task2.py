@@ -13,8 +13,10 @@ Window_filepath = "C:/Users/yeong/Desktop/ResearchStudent/Github/AIMS_AI/data/Ta
 filepath=''
 if platform.system()=='Windows':
     filepath = Window_filepath
+    print('Windows filepath')
 elif platform.system()=='Linux':
     filepath = Linux_filepath
+    print('Linux filepath')
 else:
     exit()
 ex_type= ["W","R"]
@@ -151,15 +153,15 @@ for i in range(0,10):
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import torchvision
-import torchvision.transforms as tr
 from torch.utils.data import DataLoader, Dataset
 
 device=''
 if platform.system()=='Windows':
     device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
+    print('Windows cuda')
 elif platform.system()=='Linux':
     device = 'cuda:3' if torch.cuda.is_available() else 'cpu'
+    print('Linux cuda')
 else:
     exit()
 
@@ -209,7 +211,7 @@ class Net(nn.Module):
 net = Net().to(device)
 
 PATH = './CNN_Net3.pth'
-net.load_state_dict(torch.load(PATH))
+net.load_state_dict(torch.load(PATH, map_location=torch.device(device)))
 
 def NRMSE(p,y):
     RMSE = torch.sqrt((torch.mean((p-y)**2)))/(torch.max(y) - torch.min(y))

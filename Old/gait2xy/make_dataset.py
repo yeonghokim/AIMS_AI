@@ -18,15 +18,21 @@ from scipy.signal import butter,lfilter,filtfilt
 #%%
 def Gait_label(HSR,HSL):     # input: data size, [HSR HSL]    output: R[x y] L[x y]
 
-    
+    #Left Right중 큰 것 찾기
     first_index = int(max(HSR[0],HSL[1]))
+    
+    #Left Right중 작은 것 찾기
     last_index = min(HSR[-1],HSL[-1])
+    
+    
     n = int(last_index)
     # print(n)
     true_phase = np.zeros((4,n))
 
+    #각각 차이를 가져오기
     stridetimeL = np.diff(HSL)
     stridetimeR = np.diff(HSR)    
+
 
     phasedataR =np.zeros((int(HSR[0])-1))
     for i in range(len(stridetimeR)):
@@ -112,6 +118,7 @@ def resample(data):
         
         resampled_data[i] = data[i*4]
     return resampled_data
+
 def data_scaler(window_data, time_data,angleminmax =None,angvleminmax =None,test=False): 
     scaled_window = copy.deepcopy(window_data)
     scaled_time = copy.deepcopy(time_data)
