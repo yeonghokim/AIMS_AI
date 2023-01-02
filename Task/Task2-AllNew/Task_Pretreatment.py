@@ -78,7 +78,7 @@ Trainlabel = np.empty((0,4), float)
 
 Testdata = np.empty((0,2,100), float)
 Testlabel = np.empty((0,4), float)
-for i in range(0,10):
+for i in range(7,10):
     LHS = np.array(Traindata_L_HS[i])
     LAG = np.array(Traindata_L_Angle[i])
     RHS = np.array(Traindata_R_HS[i])
@@ -93,8 +93,8 @@ for i in range(0,10):
             Traindata=np.insert(Traindata,len(Traindata),AG,axis=0)
             Trainlabel=np.insert(Trainlabel,len(Trainlabel),[HSPhase[1][flag]],axis=0)
         else:
-            Testdata=np.insert(Testdata,len(Traindata),AG,axis=0)
-            Testlabel=np.insert(Testlabel,len(Trainlabel),[HSPhase[1][flag]],axis=0)
+            Testdata=np.insert(Testdata,len(Testdata),AG,axis=0)
+            Testlabel=np.insert(Testlabel,len(Testlabel),[HSPhase[1][flag]],axis=0)
 
 #%% csv Traindata
 f = open("Traindata.csv", "w")
