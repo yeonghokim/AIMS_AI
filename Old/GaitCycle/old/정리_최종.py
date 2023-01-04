@@ -34,10 +34,12 @@ def sampling(imu):
     #sampled = np.delete(sampled, [0])  
     return sampled
 #%%
+
 gap_list = [ '1','2','15']
 con_list = [ '100','150','200']
 #sub_list = [ '1','2','3','4','5','6','7','8','9','10']
 sub_list = [ '7']
+
 #%%
 # save
 aL_R = np.zeros((1))

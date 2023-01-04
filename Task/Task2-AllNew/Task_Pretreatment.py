@@ -20,7 +20,7 @@ elif platform.system()=='Linux':
 else:
     exit()
 #%% Parameter
-CNNinput_width=100
+CNNinput_width=30
 
 #%% file read
 ex_type= ["W","R"]
@@ -72,13 +72,13 @@ for exnum in range(1,3):
 #%% Input data 
 import Gait_label as gl
 
-
-Traindata = np.empty((0,2,100), float)
+Traindata = np.empty((0,2,CNNinput_width), float)
 Trainlabel = np.empty((0,4), float)
 
-Testdata = np.empty((0,2,100), float)
+Testdata = np.empty((0,2,CNNinput_width), float)
 Testlabel = np.empty((0,4), float)
-for i in range(7,10):
+
+for i in range(0,10):
     LHS = np.array(Traindata_L_HS[i])
     LAG = np.array(Traindata_L_Angle[i])
     RHS = np.array(Traindata_R_HS[i])
@@ -95,12 +95,12 @@ for i in range(7,10):
         else:
             Testdata=np.insert(Testdata,len(Testdata),AG,axis=0)
             Testlabel=np.insert(Testlabel,len(Testlabel),[HSPhase[1][flag]],axis=0)
-
+            
 #%% csv Traindata
 f = open("Traindata.csv", "w")
 for i in range(0,len(Traindata)):
-    array = np.reshape(Traindata[i],(1,200))[0]
-    for j in range(0,200):
+    array = np.reshape(Traindata[i],(1,CNNinput_width*2))[0]
+    for j in range(0,CNNinput_width*2):
         f.write(str(array[j])+', ')
     f.write('\n')
 f.close()
@@ -117,8 +117,8 @@ f.close()
 #%% csv Testdata
 f = open("Testdata.csv", "w")
 for i in range(0,len(Testdata)):
-    array = np.reshape(Testdata[i],(1,200))[0]
-    for j in range(0,200):
+    array = np.reshape(Testdata[i],(1,CNNinput_width*2))[0]
+    for j in range(0,CNNinput_width*2):
         f.write(str(array[j])+', ')
     f.write('\n')
 f.close()

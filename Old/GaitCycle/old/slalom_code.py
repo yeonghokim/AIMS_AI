@@ -244,7 +244,7 @@ y_test_n_list.append(y_test_n)
 x_train_n = np.delete(x_train_n,0,axis=2)
 y_train_n = np.delete(y_train_n,0,axis=1)        
         
-
+#%%
 
 x_test_o = np.zeros((30,12,1))
 x_train_o = np.zeros((30,12,1))
@@ -550,6 +550,9 @@ y_test = y_test.cpu().numpy()
 #%%
 correct = 0
 total = 0
+
+model.eval()
+
 #testlist1 = [testloader_1_100, testloader_1_150, testloader_1_200]
 with torch.no_grad():
     val_losses = []
